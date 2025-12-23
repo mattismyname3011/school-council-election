@@ -13,6 +13,8 @@ export async function GET(req: NextRequest) {
           select: {
             id: true,
             name: true,
+            leader: true,
+            coLeader: true,
             _count: {
               select: { votes: true },
             },
@@ -23,6 +25,8 @@ export async function GET(req: NextRequest) {
           id: team.id,
           name: team.name,
           voteCount: team._count.votes,
+          leader: team.leader,
+          coLeader: team.coLeader,
         }));
 
         controller.enqueue(
