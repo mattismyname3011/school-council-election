@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
       await sendData();
 
       // Update every 2 seconds
-      const interval = setInterval(sendData, 2000);
+      const interval = setInterval(sendData, 10000);
 
       req.signal.addEventListener("abort", () => {
         clearInterval(interval);
