@@ -541,7 +541,7 @@ export default function HomePage() {
           <Link href="/vote">
             <Button
               size="lg"
-              className="px-8 py-4 text-lg font-semibold text-blue-900 bg-yellow-500 hover:bg-yellow-600"
+              className="px-8 py-4 text-lg font-semibold text-blue-900 bg-yellow-500 hover:bg-yellow-400 hover:cursor-pointer"
             >
               Cast Your Vote Now <ChevronRight className="w-5 h-5 ml-2" />
             </Button>

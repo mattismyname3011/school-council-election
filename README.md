@@ -5,16 +5,19 @@ A comprehensive voting application for school council elections built with Next.
 ## 🎯 Features
 
 ### 📄 Two-Page Structure
+
 - **Home Page**: Comprehensive election information with candidate profiles, programs, and live statistics
 - **Vote Page**: Dedicated voting interface with secure ballot casting
 
 ### 🗳️ Voting System
+
 - **One Vote Per Person**: Each voter can only cast one vote using their name
 - **Real-time Vote Counting**: Live statistics and vote tracking
 - **Team-based Elections**: Support for multiple candidate teams
 - **Secure Voting**: Backend validation prevents duplicate votes
 
 ### 🎨 Design & UI
+
 - **Modern Design**: Beautiful blue and yellow color scheme as requested
 - **Hero Background Image**: AI-generated school campus background
 - **Responsive Layout**: Works perfectly on desktop, tablet, and mobile
@@ -22,6 +25,7 @@ A comprehensive voting application for school council elections built with Next.
 - **Accessibility**: WCAG compliant with proper ARIA labels
 
 ### 📊 Enhanced Features
+
 - **AI-Generated Candidate Photos**: Professional headshots for all candidates
 - **Detailed Candidate Profiles**: Complete information including programs and initiatives
 - **Live Statistics**: Real-time voting results and team comparisons
@@ -31,6 +35,7 @@ A comprehensive voting application for school council elections built with Next.
 ## 🌐 Pages
 
 ### Home Page (`/`)
+
 - **Hero Section**: Eye-catching landing with school campus background image
 - **Election Overview**: Information about candidates and voting process
 - **Candidate Introductions**: Detailed profiles with photos and programs
@@ -39,6 +44,7 @@ A comprehensive voting application for school council elections built with Next.
 - **Call-to-Action**: Direct navigation to voting page
 
 ### Vote Page (`/vote`)
+
 - **Secure Voting Form**: Name input and candidate selection
 - **Live Results Panel**: Real-time vote counting and statistics
 - **Security Notice**: Information about voting security and fairness
@@ -84,79 +90,124 @@ src/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - Bun (recommended) or npm/yarn
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd school-council-election
    ```
 
 2. **Install dependencies**
+
    ```bash
    bun install
    ```
 
 3. **Set up the database**
+
    ```bash
    bun run db:push
    bun run prisma/seed.ts
    ```
 
 4. **Start the development server**
+
    ```bash
    bun run dev
    ```
 
 5. **Open your browser**
-   - Home Page: [http://localhost:3000](http://localhost:3000)
-   - Vote Page: [http://localhost:3000/vote](http://localhost:3000/vote)
+   - Home Page : [http://localhost:3000](http://localhost:3000)
+   - Vote Page : [http://localhost:3000/vote](http://localhost:3000/vote)
+   - Live Result Page : [http://localhost:3000/live-results](http://localhost:3000/live-results)
+
+### Migrate DB to Vercel Postgres
+
+1. Set up a Vercel Postgres database and get the connection string (you can find a youtube video how to make it).
+2. **Connect Vercel project**
+
+   ```bash
+   vercel link
+   ```
+
+3. **Pull the database URL from Vercel**
+
+   ```bash
+   vercel env pull .env.local
+   ```
+
+4. **Run the migration to Vercel Postgres**
+
+   ```bash
+   bunx prisma migrate dev --name=init
+   bun db:push
+   bun run prisma/seed.ts
+   ```
+
+5. **Open Prisma Studio to verify**
+
+   ```bash
+   bunx prisma studio
+   ```
 
 ## 🔌 API Endpoints
 
 ### Teams
+
 - `GET /api/teams` - Get all teams with vote counts
 - `POST /api/teams` - Create a new team (admin)
 
 ### Votes
+
 - `POST /api/votes` - Cast a vote for a team
 - `GET /api/votes` - Get all votes with statistics
 
+### Live Results
+
+- `GET /api/live-results` - Get live voting results and statistics
+
 ### Image Generation
+
 - `POST /api/generate-image` - Generate AI images for teams
 
 ### Admin
+
 - `GET /api/admin/stats` - Get comprehensive election statistics
 
 ## 🗄️ Database Schema
 
 ### Team
+
 ```typescript
 interface Team {
-  id: string
-  name: string
-  description: string
-  vision: string
-  image?: string
-  leader: string
-  coLeader: string
-  votes: Vote[]
-  createdAt: Date
-  updatedAt: Date
+  id: string;
+  name: string;
+  description: string;
+  vision: string;
+  image?: string;
+  leader: string;
+  coLeader: string;
+  votes: Vote[];
+  createdAt: Date;
+  updatedAt: Date;
 }
 ```
 
 ### Vote
+
 ```typescript
 interface Vote {
-  id: string
-  voterName: string
-  teamId: string
-  team: Team
-  timestamp: Date
+  id: string;
+  voterName: string;
+  teamId: string;
+  team: Team;
+  timestamp: Date;
 }
 ```
 
@@ -165,12 +216,14 @@ interface Vote {
 The system comes with 2 pre-configured teams with AI-generated photos:
 
 ### Visionary Leaders Team
+
 - **Leader**: Sarah Johnson (Grade 12 Student Council President)
 - **Co-Leader**: Michael Chen (Grade 11 Student Representative)
 - **Vision**: Creating an inclusive educational environment that fosters academic achievement, personal growth, and community engagement through innovative programs and student-centered initiatives
 - **Key Initiatives**: Academic excellence programs, student welfare initiatives, inclusive community building, innovation in education
 
 ### Future Forward Team
+
 - **Leader**: Emily Rodriguez (Grade 12 Environmental Club President)
 - **Co-Leader**: James Wilson (Grade 11 Sports Captain)
 - **Vision**: Building a sustainable future for our school through environmental stewardship, athletic excellence, and facility improvements that benefit all students
@@ -193,7 +246,7 @@ The system comes with 2 pre-configured teams with AI-generated photos:
 ## 📱 Responsive Design
 
 - **Mobile First**: Designed for mobile devices first
-- **Breakpoints**: 
+- **Breakpoints**:
   - Mobile: < 768px
   - Tablet: 768px - 1024px
   - Desktop: > 1024px
@@ -223,19 +276,24 @@ bun run prisma/seed.ts # Seed database
 ## 🎨 Customization
 
 ### Adding New Teams
+
 1. Use the admin API: `POST /api/teams`
 2. Or modify the seed script in `prisma/seed.ts`
 3. Generate new photos using the image generation API at `POST /api/generate-image`
 
 ### Changing Colors
+
 Update the Tailwind classes in the page files:
+
 - Primary: Change `blue-*` classes
 - Secondary: Change `yellow-*` classes
 
 ### Modifying Teams
+
 Edit the team data in `prisma/seed.ts` to add new teams or modify existing ones.
 
 ### Custom Hero Image
+
 Replace the hero background image by updating the image generation or providing your own image in the public folder.
 
 ## 🚀 Deployment
@@ -245,7 +303,7 @@ The application is ready for deployment on any platform that supports Next.js:
 - **Vercel** (recommended)
 - **Netlify**
 - **AWS Amplify**
-- **DigitalOcean App Platform`
+- \*\*DigitalOcean App Platform`
 
 ## 🤝 Contributing
 
@@ -262,6 +320,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 🆘 Support
 
 For support and questions:
+
 - Create an issue in the repository
 - Contact the development team
 
