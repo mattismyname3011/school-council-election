@@ -96,12 +96,11 @@ export default function HomePage() {
 
   // Countdown timer (example: 7 days from now)
   useEffect(() => {
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 7);
+    const targetDate = new Date("2026-01-30T23:59:59").getTime();
 
     const timer = setInterval(() => {
-      const now = new Date();
-      const difference = targetDate.getTime() - now.getTime();
+      const now = new Date().getTime();
+      const difference = targetDate - now;
 
       if (difference > 0) {
         setTimeLeft({
@@ -428,7 +427,7 @@ export default function HomePage() {
       </section>
 
       {/* Live Statistics */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="container px-4 mx-auto">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-4xl font-bold text-blue-900">
@@ -526,7 +525,7 @@ export default function HomePage() {
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Call to Action */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">

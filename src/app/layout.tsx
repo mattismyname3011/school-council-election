@@ -10,33 +10,34 @@ const geistSans = GeistSans;
 const geistMono = GeistMono;
 
 export const metadata: Metadata = {
-  title: "Z.ai Code Scaffold - AI-Powered Development",
+  title: "School Council Election - Voting Platform",
   description:
-    "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
+    "Modern Next.js platform for school council elections with TypeScript, Tailwind CSS, and shadcn/ui.",
   keywords: [
-    "Z.ai",
+    "school council",
+    "election",
+    "voting",
     "Next.js",
     "TypeScript",
     "Tailwind CSS",
     "shadcn/ui",
-    "AI development",
     "React",
   ],
-  authors: [{ name: "Z.ai Team" }],
+  authors: [{ name: "School Council Team" }],
   icons: {
     icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
   },
   openGraph: {
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
+    title: "School Council Election",
+    description: "Secure voting platform for school council elections",
     url: "https://chat.z.ai",
-    siteName: "Z.ai",
+    siteName: "School Council Election",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
+    title: "School Council Election",
+    description: "Secure voting platform for school council elections",
   },
 };
 
